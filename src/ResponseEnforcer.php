@@ -49,14 +49,14 @@ class ResponseEnforcer
         $enableEncrypt = self::getConfig('enable');
         // 如果不需要加密或 data 不存在，则直接返回结果
         if (!$enableEncrypt || !isset($result['data']) || !$is_encrypt) {
-            return Response::create(json_encode($result, JSON_UNESCAPED_UNICODE), 'json', 200);
+            return Response::create($result, 'json', 200);
         }
         $aesKey = request()->aes_key;
         $aesIv = request()->aes_iv;
 
         $result['encrypt_data'] = EncryptorEnforcer::aesEncrypt($result['data'], $aesKey, $aesIv);
         unset($result['data']);
-        return Response::create(json_encode($result, JSON_UNESCAPED_UNICODE), 'json', 200);
+        return Response::create($result, 'json', 200);
         
     }
 
