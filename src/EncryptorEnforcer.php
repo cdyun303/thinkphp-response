@@ -50,10 +50,11 @@ class EncryptorEnforcer
 
             return $decrypted;
         } catch (\Exception $e) {
-            Log::error("RSA解密失败:", [
+            Log::error(json_encode([
+                'message' => 'RSA解密失败',
                 'exception' => $e->getMessage(),
                 'trace' => $e->getTraceAsString()
-            ]);
+            ], JSON_UNESCAPED_UNICODE));
             // 避免暴露具体错误信息
             throw new \Exception('RSA解密失败');
         }
@@ -115,10 +116,11 @@ class EncryptorEnforcer
 
             return $result;
         } catch (\Exception $e) {
-            Log::error("AES解密失败:", [
+            Log::error(json_encode([
+                'message' => 'AES解密失败',
                 'exception' => $e->getMessage(),
                 'trace' => $e->getTraceAsString()
-            ]);
+            ], JSON_UNESCAPED_UNICODE));
             // 避免暴露具体错误信息
             throw new \Exception('AES解密失败');
         }
@@ -157,10 +159,11 @@ class EncryptorEnforcer
 
             return base64_encode($encrypted);
         } catch (\Exception $e) {
-            Log::error("AES加密失败:", [
+            Log::error(json_encode([
+                'message' => 'AES加密失败',
                 'exception' => $e->getMessage(),
                 'trace' => $e->getTraceAsString()
-            ]);
+            ], JSON_UNESCAPED_UNICODE));
             // 避免暴露具体错误信息
             throw new \Exception('AES加密失败');
         }
