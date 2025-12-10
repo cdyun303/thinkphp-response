@@ -4,6 +4,7 @@
  * @author cdyun(121625706@qq.com)
  * @date 2025/11/2 15:08
  */
+
 declare(strict_types=1);
 
 namespace Cdyun\ThinkphpResponse;
@@ -57,7 +58,6 @@ class ResponseEnforcer
         $result['encrypt_data'] = EncryptorEnforcer::aesEncrypt($result['data'], $aesKey, $aesIv);
         unset($result['data']);
         return Response::create($result, 'json', 200);
-        
     }
 
     /**

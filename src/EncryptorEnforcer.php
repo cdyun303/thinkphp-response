@@ -4,6 +4,7 @@
  * @author cdyun(121625706@qq.com)
  * @date 2025/11/2 15:41
  */
+
 declare(strict_types=1);
 
 namespace Cdyun\ThinkphpResponse;
